@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment1</title>
+    <style type="text/css">
+      body {
+        margin: 5em 5em 5em 5em;
+        background-color: #fcf3cf;
+      }
+      h2.heading {
+        margin-top: 75px;
+      }
+      p#border1 {
+        border-style: dotted;
+      }
+      p#border2 {
+        border-style: dashed;
+      }
+      p#border3 {
+        border-style: solid;
+      }
+      p#border4 {
+        border-style: double;
+      }
+      p#border5 {
+        border-style: groove;
+      }
+      p#border6 {
+        border-style: ridge;
+      }
+      p#border7 {
+        border-style: inset;
+      }
+      p#border8 {
+        border-style: outset;
+      }
+      p#border9 {
+        border-style: dotted dashed solid double;
+      }
+      p#margin1 {
+        margin: 50px 50px 50px 50px;
+        border-style: solid;
+      }
+      p#margin2 {
+        margin: 25px 25px 25px 25px;
+        border-style: solid;
+      }
+      div#flow {
+        margin: 20px;
+        display: flex;
+        border-style: solid;
+      }
+      div#flow > p {
+        border-style: solid;
+      }
+      div#block {
+        margin: 20px;
+        display: block;
+        border-style: solid;
+      }
+      div#block > p {
+        border-style: solid;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="heading">Sudhanshu Sah</h1>
+    <h1 class="heading">2017UCO1637</h1>
+    <h2 class="heading">Borders</h2>
+    <p id="para">No Border</p>
+    <p id="border1">Dotted border</p>
+    <p id="border2">Dashed border</p>
+    <p id="border3">Solid border</p>
+    <p id="border4">Double border</p>
+    <p id="border5">Groove border</p>
+    <p id="border6">Ridge border</p>
+    <p id="border7">Inset border</p>
+    <p id="border8">Outset border</p>
+    <p id="border9">Mixed border</p>
+    <h2 class="heading">Margins</h2>
+    <p id="margin1">Margin 50px</p>
+    <p id="margin2">Margin 25px</p>
+    <h2 class="heading">Picture</h2>
+    <h4>Resize your window to see the image changing!</h4>
+    <picture>
+      <source
+        media="(min-width:650px)"
+        style="width: 100px"
+        srcset="1200px-HTML5_logo_and_wordmark.svg.png"
+      />
+      <source
+        media="(min-width:465px)"
+        style="width: 100px"
+        srcset="CSS3_logo_and_wordmark.svg.png"
+      />
+      <img src="Javascript-shield.svg" alt="JS" style="width: 100px" />
+    </picture>
+    <h2 class="heading">Image</h2>
+    <img src="Javascript-shield.svg" alt="JS" style="width: 100px" />
+    <h2 class="heading">Flow</h2>
+    <div id="flow">
+      <p
+        style="
+          display: block;
+          text-decoration: none;
+          border-style: none;
+          margin: 20px;
+          padding: 20px;
+        "
+      >
+        Flow
+      </p>
+      <p>Child 1</p>
+      <p>Child 2</p>
+      <p>Child 3</p>
+      <p>Child 4</p>
+    </div>
+    <h2 class="heading">Block</h2>
+    <div id="block">
+      <p
+        style="
+          display: block;
+          text-decoration: none;
+          border-style: none;
+          margin: 20px;
+          padding: 20px;
+        "
+      >
+        Block
+      </p>
+      <p>Child 1</p>
+      <p>Child 2</p>
+      <p>Child 3</p>
+      <p>Child 4</p>
+    </div>
+  </body>
+</html>
