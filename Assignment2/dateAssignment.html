@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudhanshu Sah</title>
+    <style type="text/css">
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #introd {
+        margin: 2%;
+        padding: 2%;
+      }
+      .btn-custom {
+        margin: 0.3em;
+        width: 37% !important;
+      }
+      #btns {
+        display: flex;
+        width: 50%;
+        padding: 10px;
+        border: 3px solid green;
+        text-align: left;
+      }
+      .float-container {
+        padding: 5px;
+        margin: 5px;
+        border: 3px solid #fff;
+      }
+      .fc-content {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="introd">
+      <h2>Sudhanshu Sah</h2>
+      <h3>2017UCO1637</h3>
+      <h3>Date Object Assignment</h3>
+      <br />
+      <h5>
+        Click on the buttons in sequence to see the output on the right side of
+        screen
+      </h5>
+    </div>
+    <div class="float-container">
+      <div class="fc-content btn-group-vertical">
+        <button
+          id="btn-1"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="createobj1()"
+        >
+          Create date obj 1
+        </button>
+        <button
+          id="btn-2"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="createobj2()"
+        >
+          Create date obj 2
+        </button>
+        <button
+          id="btn-3"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="diffdays()"
+        >
+          Calculate difference in days
+        </button>
+        <button
+          id="btn-4"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="diffmonths()"
+        >
+          Calculate difference in months
+        </button>
+        <button
+          id="btn-5"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="diffyears()"
+        >
+          Calculate difference in years
+        </button>
+        <button
+          id="btn-6"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="setnewdate()"
+        >
+          Set new date
+        </button>
+        <button
+          id="btn-7"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="getnewdate()"
+        >
+          Get new date
+        </button>
+        <button
+          id="btn-10"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="setnewmonth()"
+        >
+          Set new month
+        </button>
+        <button
+          id="btn-11"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="getnewmonth()"
+        >
+          Get new month
+        </button>
+        <button
+          id="btn-12"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="setnewyear()"
+        >
+          Set new year
+        </button>
+        <button
+          id="btn-13"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="getnewyear()"
+        >
+          Get new year
+        </button>
+        <button
+          id="btn-8"
+          type="button"
+          class="btn btn-primary btn-custom"
+          onclick="getregion()"
+        >
+          Get region
+        </button>
+      </div>
+      <div id="output-div" class="fc-content">
+        <h3>Output:</h3>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    let opdiv = document.getElementById("output-div");
+    let dt1, dt2;
+    function calcSecDiff(d1, d2) {
+      let millisecondDiff = d2 - d1;
+      let secDiff = Math.floor((d2 - d1) / 1000);
+      return secDiff;
+    }
+    function calcMinDiff(d1, d2) {
+      let seconds = calcSecDiff(d1, d2);
+      let calcMinDiff = Math.floor(seconds / 60);
+      return calcMinDiff;
+    }
+    function calcHrDiff(d1, d2) {
+      let minutes = calcMinDiff(d1, d2);
+      let calcHrDiff = Math.floor(minutes / 60);
+      return calcHrDiff;
+    }
+    function calcDayDiff(d1, d2) {
+      let hours = calcHrDiff(d1, d2);
+      let calcDayDiff = Math.floor(hours / 24);
+      return calcDayDiff;
+    }
+    function calcYearDiff(d1, d2) {
+      let date1 = new Date(d1);
+      let date2 = new Date(d2);
+      let calcYearDiff = date2.getFullYear() - date1.getFullYear();
+      return calcYearDiff;
+    }
+    function calcMonDiff(d1, d2) {
+      let date1 = new Date(d1);
+      let date2 = new Date(d2);
+      let years = calcYearDiff(d1, d2);
+      let months = years * 12 + (date2.getMonth() - date1.getMonth());
+      return months;
+    }
+    function createobj1() {
+      dt1 = new Date(2019, 08, 16, 20, 16, 35);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Data object 1: " + dt1.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    function createobj2() {
+      dt2 = new Date(Date.now());
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Data object 2 [Date.now()]: " + dt2.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    function diffdays() {
+      let daydiff = calcDayDiff(dt1.getTime(), dt2.getTime());
+      console.log(`daydiff: ${daydiff}`);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Difference of days between Date object 1 and Date object 2: " +
+          daydiff.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    function diffmonths() {
+      let monthdiff = calcMonDiff(dt1.getTime(), dt2.getTime());
+      console.log(`monthdiff: ${monthdiff}`);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Difference of months between Date object 1 and Date object 2: " +
+          monthdiff.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    function diffyears() {
+      let yeardiff = calcYearDiff(dt1.getTime(), dt2.getTime());
+      console.log(`yeardiff: ${yeardiff}`);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Difference of years between Date object 1 and Date object 2: " +
+          yeardiff.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    let newdate;
+    function setnewdate() {
+      newdate = new Date(2017, 7, 1);
+      console.log(newdate);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Creating a new date: " + newdate.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+      newdate.setDate(2);
+      let p_append1 = document.createElement("p");
+      let text_append1 = document.createTextNode(
+        "Setting date to 02/08/2017: " + newdate.toString()
+      );
+      p_append1.appendChild(text_append1);
+      opdiv.appendChild(p_append1);
+    }
+    function getnewdate() {
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "New date is: " + newdate.getDate()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    let newmonth;
+    function setnewmonth() {
+      newmonth = new Date(2017, 7, 1);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Creating a new date: " + newmonth.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+      newmonth.setMonth(8);
+      let p_append1 = document.createElement("p");
+      let text_append1 = document.createTextNode(
+        "Setting month to 01/09/2017: " + newmonth.toString()
+      );
+      p_append1.appendChild(text_append1);
+      opdiv.appendChild(p_append1);
+    }
+    function getnewmonth() {
+      let monnum = parseInt(newmonth.getMonth(), 10) + 1;
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "New month is: " + monnum.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    let newyear;
+    function setnewyear() {
+      newyear = new Date(2017, 7, 1);
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "Creating a new date: " + newyear.toString()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+      newyear.setYear(2018);
+      let p_append1 = document.createElement("p");
+      let text_append1 = document.createTextNode(
+        "Setting year to 01/08/2018: " + newyear.toString()
+      );
+      p_append1.appendChild(text_append1);
+      opdiv.appendChild(p_append1);
+    }
+    function getnewyear() {
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "New year is: " + newyear.getFullYear()
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+    function getregion() {
+      let gmtRe = /GMT([\-\+]?\d{4})/;
+      let tzRe = /\(([\w\s]+)\)/;
+      let d = new Date(Date.now());
+      let offset = gmtRe.exec(d)[1];
+      let region = tzRe.exec(d)[1];
+      let p_append = document.createElement("p");
+      let text_append = document.createTextNode(
+        "GMT offset is: " + offset + " and Region is: " + region
+      );
+      p_append.appendChild(text_append);
+      opdiv.appendChild(p_append);
+    }
+  </script>
+</html>
